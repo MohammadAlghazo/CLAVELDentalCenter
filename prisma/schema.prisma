@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Booking {
+  id          Int      @id @default(autoincrement())
+  fullName    String
+  phone       String
+  service     String
+  doctor      String?
+  preferDate  String?
+  preferTime  String?
+  notes       String?
+  status      String   @default("pending") // pending | confirmed | cancelled
+  createdAt   DateTime @default(now())
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Article {
+  id          Int       @id @default(autoincrement())
+  title       String
+  slug        String    @unique
+  summary     String
+  content     String
+  imageUrl    String?
+  status      String    @default("draft") // draft | published
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Doctor {
+  id             Int      @id @default(autoincrement())
+  nameAr         String
+  nameEn         String
+  titleAr        String
+  titleEn        String
+  slug           String   @unique
+  image          String
+  shortBio       String
+  qualifications String   // Stored as JSON string due to SQLite limitations
+  specialties    String   // Stored as JSON string
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Faq {
+  id        Int      @id @default(autoincrement())
+  question  String
+  answer    String
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
