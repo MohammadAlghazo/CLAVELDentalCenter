@@ -1,20 +1,22 @@
-import type { Metadata } from "next";
+import { PrismaClient } from "@prisma/client";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { doctors } from "@/data/siteData";
 import { CheckCircle, Phone, MessageCircle, Award, Stethoscope } from "lucide-react";
+
+const prisma = new PrismaClient();
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
+  const doctors = await prisma.doctor.findMany({ select: { slug: true } });
   return doctors.map((d) => ({ slug: d.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<import("next").Metadata> {
   const { slug } = await params;
-  const doctor = doctors.find((d) => d.slug === slug);
+  const doctor = await prisma.doctor.findUnique({ where: { slug } });
   if (!doctor) return {};
   return {
     title: `${doctor.nameAr} | مجمع كلافيل لطب الأسنان`,
@@ -25,8 +27,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function DoctorPage({ params }: Props) {
   const { slug } = await params;
-  const doctor = doctors.find((d) => d.slug === slug);
-  if (!doctor) notFound();
+  const doctor = await prisma.doctor.findUnique({ where: { slug } });
+  if (!doctor || !doctor.isActive) notFound();
+
+  const qualifications = JSON.parse(doctor.qualifications) as string[];
+  const specialties = JSON.parse(doctor.specialties) as string[];
 
   return (
     <div className="font-cairo" dir="rtl">
@@ -61,7 +66,7 @@ export default async function DoctorPage({ params }: Props) {
                   <img
                     src={doctor.image || ""}
                     alt={doctor.nameAr}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
                 <div className="space-y-3">
@@ -107,7 +112,7 @@ export default async function DoctorPage({ params }: Props) {
                   </h3>
                 </div>
                 <ul className="space-y-3">
-                  {doctor.qualifications.map((q, i) => (
+                  {qualifications.map((q, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <CheckCircle size={18} className="text-[#C9A96E] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700 font-cairo text-sm leading-relaxed">
@@ -127,7 +132,7 @@ export default async function DoctorPage({ params }: Props) {
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {doctor.specialties.map((spec, i) => (
+                  {specialties.map((spec, i) => (
                     <span
                       key={i}
                       className="bg-[#F5F0E8] text-[#1B4332] px-4 py-2 rounded-full text-sm font-semibold font-cairo border border-[#C9A96E]/20"

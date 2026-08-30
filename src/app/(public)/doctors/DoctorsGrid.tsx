@@ -12,12 +12,12 @@ export default function DoctorsGrid({ doctors }: { doctors: Doctor[] }) {
           className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.07)] hover:shadow-[0_16px_50px_rgba(27,67,50,0.15)] transition-all duration-300 hover:-translate-y-3"
         >
           {/* Photo */}
-          <div className="relative bg-gradient-to-br from-[#F5F0E8] to-[#e8e0d0] h-64 flex items-center justify-center overflow-hidden">
+          <div className="relative bg-gradient-to-br from-[#F5F0E8] to-[#e8e0d0] aspect-[4/5] flex items-center justify-center overflow-hidden">
             {doctor.image ? (
               <img
                 src={doctor.image}
                 alt={doctor.nameAr}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                   const fallback = e.currentTarget.nextElementSibling as HTMLElement;

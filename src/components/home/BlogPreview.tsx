@@ -1,41 +1,20 @@
 import Link from "next/link";
 import { ArrowLeft, Calendar } from "lucide-react";
+import { PrismaClient } from "@prisma/client";
 
-// Placeholder blog posts until DB is connected
-const placeholderPosts = [
-  {
-    id: 1,
-    title: "أهمية الفحص الدوري لأسنانك وكيف يحمي صحتك",
-    slug: "importance-of-dental-checkups",
-    summary:
-      "يعتقد كثيرون أن زيارة طبيب الأسنان ضرورية فقط عند وجود الألم، لكن الحقيقة عكس ذلك تماماً. الكشف المبكر يوفر عليك الكثير.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80",
-    publishedAt: "2025-01-15",
-  },
-  {
-    id: 2,
-    title: "الفرق بين الزيركون والبورسلين: أيهما الأنسب لك؟",
-    slug: "zircon-vs-porcelain",
-    summary:
-      "مع تطور تقنيات طب الأسنان التجميلي، أصبح لديك خيارات عديدة لاستعادة ابتسامتك. نستعرض الفروق الجوهرية لمساعدتك في الاختيار.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80",
-    publishedAt: "2025-01-22",
-  },
-  {
-    id: 3,
-    title: "كل ما تريد معرفته عن زراعة الأسنان قبل القرار",
-    slug: "dental-implants-guide",
-    summary:
-      "زراعة الأسنان أصبحت من أكثر إجراءات طب الأسنان شيوعاً وأماناً. نجيب في هذا المقال على كل أسئلتك قبل اتخاذ القرار.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1588776814546-1ffbb172ef7b?w=600&q=80",
-    publishedAt: "2025-02-05",
-  },
-];
+const prisma = new PrismaClient();
 
-export default function BlogPreview() {
+export default async function BlogPreview() {
+  const articles = await prisma.article.findMany({
+    where: { status: "published" },
+    orderBy: { publishedAt: "desc" },
+    take: 3,
+  });
+
+  if (articles.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-20 bg-[#F5F0E8]" id="blog">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,23 +29,31 @@ export default function BlogPreview() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {placeholderPosts.map((post) => (
+          {articles.map((post) => (
             <Link
               key={post.id}
               href={`/blog/${post.slug}`}
               className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.06)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.14)] transition-all duration-300 hover:-translate-y-2"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={post.imageUrl}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                {post.imageUrl ? (
+                  <img
+                    src={post.imageUrl}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <span className="text-gray-400 font-cairo text-sm">لا توجد صورة</span>
+                )}
               </div>
               <div className="p-5">
                 <div className="flex items-center gap-2 text-gray-400 text-xs font-cairo mb-3">
                   <Calendar size={13} />
-                  <span>{new Date(post.publishedAt).toLocaleDateString("ar-SA")}</span>
+                  <span>
+                    {post.publishedAt
+                      ? new Date(post.publishedAt).toLocaleDateString("ar-SA")
+                      : new Date(post.createdAt).toLocaleDateString("ar-SA")}
+                  </span>
                 </div>
                 <h3 className="font-bold text-[#1B4332] font-cairo text-base leading-snug mb-2 group-hover:text-[#C9A96E] transition-colors duration-200">
                   {post.title}

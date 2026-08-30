@@ -44,12 +44,12 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
               className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.07)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-100"
             >
               {/* Photo */}
-              <div className="relative bg-[#F5F0E8] h-52 flex items-center justify-center overflow-hidden">
+              <div className="relative bg-[#F5F0E8] aspect-[4/5] flex items-center justify-center overflow-hidden">
                 {doctor.image ? (
                   <img
                     src={doctor.image}
                     alt={doctor.nameAr}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : (
                   <div className="w-24 h-24 bg-[#1B4332]/10 rounded-full flex items-center justify-center">
