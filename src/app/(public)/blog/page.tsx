@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const prisma = new PrismaClient();
 
-export const revalidate = 60; // Cache for 1 minute (allows dynamic searchParams to work well)
+export const dynamic = "force-dynamic";
 
 export default async function BlogPage({ searchParams }: { searchParams: { page?: string } }) {
   const page = Number(searchParams?.page) || 1;
