@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, MessageCircle, MapPin } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Lock } from "lucide-react";
 
 const quickLinks = [
   { href: "/", label: "الرئيسية" },
@@ -206,10 +206,13 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-center gap-3">
           <p className="text-xs text-gray-400 font-cairo text-center">
-            <Link href="/admin/login" className="hover:text-gray-300 transition-colors">©</Link> 2025 مجمع كلافيل لطب الأسنان. جميع الحقوق محفوظة.
+            © 2025 مجمع كلافيل لطب الأسنان. جميع الحقوق محفوظة.
           </p>
+          <Link href="/admin/login" className="text-gray-500 hover:text-gray-300 transition-colors" aria-label="تسجيل دخول الإدارة">
+            <Lock size={13} />
+          </Link>
         </div>
       </div>
     </footer>
