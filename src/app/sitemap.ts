@@ -1,18 +1,28 @@
 import { MetadataRoute } from "next";
+import { PrismaClient } from "@prisma/client";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const prisma = new PrismaClient();
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://clavel.dental";
   const now = new Date();
+
+  // Fetch dynamic data
+  const doctors = await prisma.doctor.findMany({
+    where: { isActive: true },
+    select: { slug: true, updatedAt: true },
+  });
+
+  const articles = await prisma.article.findMany({
+    where: { status: "published" },
+    select: { slug: true, updatedAt: true },
+  });
 
   const servicesSlugs = [
     "american-implant", "german-implant", "italian-implant",
     "german-zircon", "emax-veneer", "composite-filling",
     "snap-on-smile", "teeth-cleaning", "scaling-polishing",
     "root-canal", "direct-veneer", "teeth-whitening",
-  ];
-
-  const doctorsSlugs = [
-    "muntasir-fadl", "ammar-al-tarjumi", "doaa-doudin", "waleed-mubarak",
   ];
 
   const staticPages = [
@@ -34,12 +44,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const doctorPages = doctorsSlugs.map((slug) => ({
-    url: `${baseUrl}/doctors/${slug}`,
-    lastModified: now,
+  const doctorPages = doctors.map((doctor) => ({
+    url: `${baseUrl}/doctors/${doctor.slug}`,
+    lastModified: doctor.updatedAt,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...doctorPages];
+  const articlePages = articles.map((article) => ({
+    url: `${baseUrl}/blog/${article.slug}`,
+    lastModified: article.updatedAt,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...servicePages, ...doctorPages, ...articlePages];
 }
