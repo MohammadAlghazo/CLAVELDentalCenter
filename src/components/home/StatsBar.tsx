@@ -1,8 +1,21 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { stats } from "@/data/siteData";
+import { Heart } from "lucide-react";
 
-function StatItem({ value, label, index }: { value: string; label: string; index: number }) {
+const customStats = [
+  { value: "25+", label: "سنة خبرة" },
+  { value: "4+", label: "أطباء متخصصون" },
+  { value: "12+", label: "خدمة متكاملة" },
+  { isIcon: true, icon: Heart, label: "المدينة المنورة" },
+];
+
+function StatItem({ 
+  item, 
+  index 
+}: { 
+  item: typeof customStats[0]; 
+  index: number 
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -14,7 +27,7 @@ function StatItem({ value, label, index }: { value: string; label: string; index
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -27,11 +40,15 @@ function StatItem({ value, label, index }: { value: string; label: string; index
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
-      <span className="text-4xl sm:text-5xl font-extrabold text-[#1B4332] font-cairo mb-2">
-        {value}
-      </span>
-      <span className="text-sm sm:text-base text-gray-500 font-cairo font-semibold text-center">
-        {label}
+      {item.isIcon && item.icon ? (
+        <item.icon className="w-10 h-10 sm:w-12 sm:h-12 text-[#C9A96E] mb-2 fill-current" />
+      ) : (
+        <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#C9A96E] font-cairo mb-2">
+          {item.value}
+        </span>
+      )}
+      <span className="text-sm sm:text-base text-gray-200 font-cairo font-medium text-center">
+        {item.label}
       </span>
     </div>
   );
@@ -39,11 +56,11 @@ function StatItem({ value, label, index }: { value: string; label: string; index
 
 export default function StatsBar() {
   return (
-    <div className="relative z-20 -mt-16 sm:-mt-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-      <div className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(27,67,50,0.12)] border border-gray-100 p-6 sm:p-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-x divide-x-reverse divide-gray-100">
-          {stats.map((stat, i) => (
-            <StatItem key={i} value={stat.value} label={stat.label} index={i} />
+    <div className="bg-[#1B4332] w-full relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          {customStats.map((stat, i) => (
+            <StatItem key={i} item={stat} index={i} />
           ))}
         </div>
       </div>

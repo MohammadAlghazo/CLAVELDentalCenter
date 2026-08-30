@@ -34,24 +34,6 @@ export default function AboutSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1B4332]/30 to-transparent" />
             </div>
-            {/* Floating card */}
-            <div className="absolute -bottom-5 -left-5 bg-white rounded-xl shadow-xl p-4 border border-gray-100">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#1B4332] rounded-full flex items-center justify-center">
-                  <span className="text-[#C9A96E] font-extrabold text-lg font-cairo">
-                    25+
-                  </span>
-                </div>
-                <div>
-                  <div className="font-bold text-[#1B4332] font-cairo text-sm">
-                    سنة خبرة
-                  </div>
-                  <div className="text-xs text-gray-500 font-cairo">
-                    في طب الأسنان
-                  </div>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           {/* Text - Left side in RTL */}

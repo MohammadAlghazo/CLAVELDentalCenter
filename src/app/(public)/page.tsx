@@ -1,4 +1,5 @@
 import HeroSection from "@/components/home/HeroSection";
+import StatsBar from "@/components/home/StatsBar";
 import AboutSection from "@/components/home/AboutSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import DoctorsSection from "@/components/home/DoctorsSection";
@@ -35,6 +36,7 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection />
+      <StatsBar />
       <AboutSection />
       <ServicesSection />
       <DoctorsSection doctors={doctors} />
