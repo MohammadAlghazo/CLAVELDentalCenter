@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, ArrowLeft, ArrowRight } from "lucide-react";
 import { PrismaClient } from "@prisma/client";
+import Pagination from "@/components/blog/Pagination";
 
 export const metadata: Metadata = {
   title: "مدونة طب الأسنان | مجمع كلافيل",
@@ -13,8 +14,9 @@ const prisma = new PrismaClient();
 
 export const dynamic = "force-dynamic";
 
-export default async function BlogPage({ searchParams }: { searchParams: { page?: string } }) {
-  const page = Number(searchParams?.page) || 1;
+export default async function BlogPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  const params = await searchParams;
+  const page = Number(params?.page) || 1;
   const limit = 9; // 9 articles per page
   const skip = (page - 1) * limit;
 
@@ -75,38 +77,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { page?
                 ))}
               </div>
 
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-3 mt-16">
-                  {page > 1 && (
-                    <Link href={`/blog?page=${page - 1}`} className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-[#1B4332] hover:bg-[#C9A96E] hover:text-white transition-colors border border-gray-200 shadow-sm" aria-label="الصفحة السابقة">
-                      <ArrowRight size={18} />
-                    </Link>
-                  )}
-                  
-                  <div className="flex items-center gap-2">
-                    {Array.from({ length: totalPages }).map((_, i) => (
-                      <Link 
-                        key={i} 
-                        href={`/blog?page=${i + 1}`}
-                        className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-bold transition-all duration-300 ${
-                          page === i + 1 
-                            ? "bg-[#1B4332] text-white shadow-[0_4px_15px_rgba(27,67,50,0.3)] scale-110" 
-                            : "bg-white text-gray-600 hover:bg-[#C9A96E] hover:text-white border border-gray-200"
-                        }`}
-                      >
-                        {i + 1}
-                      </Link>
-                    ))}
-                  </div>
-
-                  {page < totalPages && (
-                    <Link href={`/blog?page=${page + 1}`} className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-[#1B4332] hover:bg-[#C9A96E] hover:text-white transition-colors border border-gray-200 shadow-sm" aria-label="الصفحة التالية">
-                      <ArrowLeft size={18} />
-                    </Link>
-                  )}
-                </div>
-              )}
+              <Pagination totalPages={totalPages} currentPage={page} />
             </>
           )}
         </div>
