@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import { doctors } from "@/data/siteData";
 import { Phone, UserRound } from "lucide-react";
+import type { Doctor } from "@prisma/client";
 
-export default function DoctorsGrid() {
+export default function DoctorsGrid({ doctors }: { doctors: Doctor[] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {doctors.map((doctor) => (

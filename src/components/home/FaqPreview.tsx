@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { faqData } from "@/data/siteData";
 import { ChevronDown, ArrowLeft } from "lucide-react";
+import type { Faq } from "@prisma/client";
 
-export default function FaqPreview() {
+export default function FaqPreview({ faqs }: { faqs: Faq[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const displayFaqs = faqData.slice(0, 4);
+  const displayFaqs = faqs.slice(0, 4);
 
   return (
     <section className="py-20 bg-white" id="faq">

@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-import { doctors } from "@/data/siteData";
 import { Phone, UserRound, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import type { Doctor } from "@prisma/client";
 
-export default function DoctorsSection() {
+export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 

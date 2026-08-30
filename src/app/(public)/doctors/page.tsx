@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import DoctorsGrid from "./DoctorsGrid";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+export const revalidate = 3600; // Cache for 1 hour
 
 export const metadata: Metadata = {
   title: "كوادرنا الطبية | مجمع كلافيل لطب الأسنان",
@@ -8,7 +13,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://clavel.dental/doctors" },
 };
 
-export default function DoctorsPage() {
+export default async function DoctorsPage() {
+  const doctors = await prisma.doctor.findMany({
+    where: { isActive: true },
+  });
+
   return (
     <div className="font-cairo" dir="rtl">
       {/* Hero */}
@@ -27,7 +36,7 @@ export default function DoctorsPage() {
       {/* Doctors Grid - Client Component */}
       <section className="py-20 bg-[#F5F0E8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <DoctorsGrid />
+          <DoctorsGrid doctors={doctors} />
         </div>
       </section>
     </div>

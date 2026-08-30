@@ -210,17 +210,9 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-center">
           <p className="text-xs text-gray-400 font-cairo text-center">
             <Link href="/admin/login" className="hover:text-gray-300 transition-colors">©</Link> 2025 مجمع كلافيل لطب الأسنان. جميع الحقوق محفوظة.
-          </p>
-          <p className="text-xs text-gray-500 font-cairo">
-            <a
-              href="https://clavel.dental"
-              className="hover:text-[#C9A96E] transition-colors"
-            >
-              Clavel.dental
-            </a>
           </p>
         </div>
       </div>

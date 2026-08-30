@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import FaqAccordion from "@/components/ui/FaqAccordion";
-import { faqData } from "@/data/siteData";
 import Link from "next/link";
 import { Phone } from "lucide-react";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "الأسئلة الشائعة | مجمع كلافيل لطب الأسنان",
@@ -11,7 +14,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://clavel.dental/faq" },
 };
 
-export default function FaqPage() {
+export default async function FaqPage() {
+  const faqs = await prisma.faq.findMany({
+    where: { isActive: true },
+    orderBy: { order: "asc" },
+  });
+
   return (
     <div className="font-cairo" dir="rtl">
       {/* Hero */}
@@ -30,7 +38,7 @@ export default function FaqPage() {
       {/* FAQ */}
       <section className="py-20 bg-[#F5F0E8]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FaqAccordion items={faqData} />
+          <FaqAccordion items={faqs} />
 
           {/* CTA */}
           <div className="mt-14 bg-[#1B4332] rounded-2xl p-8 text-center text-white">
