@@ -36,11 +36,11 @@ export default function BookingCTA() {
       if (res.ok) {
         setSubmitted(true);
         reset();
+      } else {
+        alert("حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو الاتصال بنا هاتفياً.");
       }
     } catch {
-      // Handle error silently - show success anyway for UX
-      setSubmitted(true);
-      reset();
+      alert("حدث خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً.");
     } finally {
       setLoading(false);
     }

@@ -53,10 +53,11 @@ function BookingForm() {
       if (res.ok || res.status === 201) {
         setSubmitted(true);
         reset();
+      } else {
+        alert("حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو الاتصال بنا هاتفياً.");
       }
     } catch {
-      setSubmitted(true);
-      reset();
+      alert("حدث خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً.");
     } finally {
       setLoading(false);
     }
