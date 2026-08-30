@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -37,7 +38,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[#1B4332]/90 z-10" />
           {article.imageUrl ? (
-            <img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover" />
+            <Image src={article.imageUrl} alt={article.title} fill priority className="object-cover" sizes="100vw" />
           ) : (
             <div className="w-full h-full bg-[#1B4332]" />
           )}

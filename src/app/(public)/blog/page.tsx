@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, ArrowLeft, ArrowRight } from "lucide-react";
 import { PrismaClient } from "@prisma/client";
 import Pagination from "@/components/blog/Pagination";
@@ -56,7 +57,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
                     className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.06)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.14)] transition-all duration-300 hover:-translate-y-2 flex flex-col">
                     {post.imageUrl && (
                       <div className="relative h-52 overflow-hidden bg-gray-100">
-                        <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <Image src={post.imageUrl} alt={post.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                       </div>
                     )}
                     <div className="p-5 flex-1 flex flex-col">
