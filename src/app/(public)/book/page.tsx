@@ -101,7 +101,7 @@ function BookingForm() {
       noValidate
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {/* Full Name */}
+        
         <div>
           <label className="form-label">الاسم الكامل *</label>
           <input
@@ -116,7 +116,6 @@ function BookingForm() {
           )}
         </div>
 
-        {/* Phone */}
         <div>
           <label className="form-label">رقم الجوال *</label>
           <input
@@ -133,7 +132,6 @@ function BookingForm() {
           )}
         </div>
 
-        {/* Service */}
         <div>
           <label className="form-label">الخدمة المطلوبة *</label>
           <select {...register("service")} className="form-input cursor-pointer">
@@ -151,7 +149,6 @@ function BookingForm() {
           )}
         </div>
 
-        {/* Doctor */}
         <div>
           <label className="form-label">الطبيب المفضل</label>
           <select {...register("doctor")} className="form-input cursor-pointer">
@@ -164,7 +161,6 @@ function BookingForm() {
           </select>
         </div>
 
-        {/* Date */}
         <div>
           <label className="form-label">التاريخ المفضل</label>
           <input
@@ -175,7 +171,6 @@ function BookingForm() {
           />
         </div>
 
-        {/* Time */}
         <div>
           <label className="form-label">الوقت المفضل</label>
           <select {...register("preferTime")} className="form-input cursor-pointer">
@@ -185,7 +180,6 @@ function BookingForm() {
           </select>
         </div>
 
-        {/* Notes */}
         <div className="sm:col-span-2">
           <label className="form-label">ملاحظات إضافية</label>
           <textarea
@@ -196,7 +190,6 @@ function BookingForm() {
           />
         </div>
 
-        {/* Privacy */}
         <div className="sm:col-span-2">
           <label className="flex items-start gap-3 cursor-pointer group">
             <input
@@ -245,7 +238,7 @@ function BookingForm() {
 export default function BookPage() {
   return (
     <div className="font-cairo" dir="rtl">
-      {/* Hero */}
+      
       <section className="page-hero">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white font-cairo mb-4">
@@ -258,7 +251,6 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* Form Section */}
       <section className="py-20 bg-[#F5F0E8]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl shadow-[0_8px_40px_rgba(27,67,50,0.08)] p-6 sm:p-10">
@@ -267,7 +259,6 @@ export default function BookPage() {
             </Suspense>
           </div>
 
-          {/* Alternative Contact */}
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <a
               href="https://api.whatsapp.com/send?phone=966510626630"

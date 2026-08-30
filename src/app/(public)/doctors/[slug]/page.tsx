@@ -35,7 +35,7 @@ export default async function DoctorPage({ params }: Props) {
 
   return (
     <div className="font-cairo" dir="rtl">
-      {/* Hero */}
+      
       <section className="page-hero">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-10">
           <div className="flex items-center justify-center gap-2 text-white/60 text-sm font-cairo mb-4">
@@ -55,11 +55,10 @@ export default async function DoctorPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Profile */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Photo + Quick Actions */}
+            
             <div className="lg:col-span-1">
               <div className="sticky top-28">
                 <div className="bg-gradient-to-br from-[#F5F0E8] to-[#e8e0d0] rounded-2xl overflow-hidden mb-5 aspect-square flex items-center justify-center shadow-[0_8px_30px_rgba(27,67,50,0.12)]">
@@ -90,9 +89,8 @@ export default async function DoctorPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Info */}
             <div className="lg:col-span-2 space-y-8">
-              {/* Short Bio */}
+              
               <div>
                 <h2 className="text-2xl font-bold text-[#1B4332] font-cairo mb-2">
                   نبذة مختصرة
@@ -103,7 +101,6 @@ export default async function DoctorPage({ params }: Props) {
                 </p>
               </div>
 
-              {/* Qualifications */}
               <div>
                 <div className="flex items-center gap-2 mb-5">
                   <Award size={22} className="text-[#C9A96E]" />
@@ -123,7 +120,6 @@ export default async function DoctorPage({ params }: Props) {
                 </ul>
               </div>
 
-              {/* Specialties */}
               <div>
                 <div className="flex items-center gap-2 mb-5">
                   <Stethoscope size={22} className="text-[#C9A96E]" />
@@ -143,7 +139,6 @@ export default async function DoctorPage({ params }: Props) {
                 </div>
               </div>
 
-              {/* CTA */}
               <div className="bg-[#F5F0E8] rounded-2xl p-6">
                 <h3 className="font-bold text-[#1B4332] font-cairo text-lg mb-2">
                   هل تريد الاستشارة مع {doctor.nameAr.split(" ")[1]}؟

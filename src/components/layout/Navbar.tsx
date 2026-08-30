@@ -24,7 +24,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, []);
@@ -40,7 +39,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 sm:h-24">
-            {/* Logo - Right side (RTL) */}
+            
             <Link href="/" className="flex items-center gap-3 sm:gap-4 flex-shrink-0 group">
               <div className="relative w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                 <img 
@@ -65,7 +64,6 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
@@ -78,7 +76,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* CTA Button */}
             <div className="hidden lg:block">
               <Link
                 href="/book"
@@ -89,7 +86,6 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 rounded-md transition-colors duration-200 text-white hover:text-[#C9A96E]"
@@ -100,7 +96,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={`lg:hidden transition-all duration-300 overflow-hidden bg-white border-t border-gray-100 shadow-lg ${
             isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"

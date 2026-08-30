@@ -9,7 +9,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       id="hero"
     >
-      {/* Background gradient overlay */}
+      
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -18,7 +18,6 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Background pattern */}
       <div
         className="absolute inset-0 z-0 opacity-30"
         style={{
@@ -26,7 +25,6 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Background image */}
       <div
         className="absolute inset-0 z-[-1]"
         style={{
@@ -38,9 +36,8 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-16">
-        {/* Elegant Location Subtitle */}
+        
         <motion.h2
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,7 +49,6 @@ export default function HeroSection() {
           <span className="w-8 h-[1px] bg-[#C9A96E]"></span>
         </motion.h2>
 
-        {/* Main Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,7 +60,6 @@ export default function HeroSection() {
           <span className="text-[#C9A96E]">عناية تليق بها</span>
         </motion.h1>
 
-        {/* Description */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,7 +71,6 @@ export default function HeroSection() {
           وخدمات علاجية وتجميلية باستخدام تقنيات ومواد عالية الجودة.
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

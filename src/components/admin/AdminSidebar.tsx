@@ -30,7 +30,7 @@ export default function AdminSidebar() {
 
   return (
     <aside className="w-64 bg-[#1B4332] text-white min-h-screen flex flex-col fixed right-0 top-0 bottom-0 z-50 transition-all duration-300">
-      {/* Logo Area */}
+      
       <div className="p-6 border-b border-white/10 flex flex-col items-center justify-center">
         <Link href="/" target="_blank" className="bg-white/10 p-3 rounded-full mb-3 hover:bg-white/20 transition-colors">
           <Image src="/images/logo.png" alt="Logo" width={50} height={50} className="filter brightness-0 invert" />
@@ -41,7 +41,6 @@ export default function AdminSidebar() {
         </a>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
@@ -63,7 +62,6 @@ export default function AdminSidebar() {
         })}
       </nav>
 
-      {/* Logout */}
       <div className="p-4 border-t border-white/10">
         <button
           onClick={() => signOut({ callbackUrl: "/admin/login" })}

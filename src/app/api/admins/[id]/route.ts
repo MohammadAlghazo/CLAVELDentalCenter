@@ -16,8 +16,7 @@ export async function DELETE(
 
   try {
     const adminId = parseInt(params.id);
-    
-    // Check if trying to delete the last admin
+
     const totalAdmins = await prisma.admin.count();
     if (totalAdmins <= 1) {
       return NextResponse.json(
@@ -26,8 +25,6 @@ export async function DELETE(
       );
     }
 
-    // Check if trying to delete currently logged in admin
-    // session.user.name is mapped to username in our next-auth setup
     const adminToDelete = await prisma.admin.findUnique({
       where: { id: adminId }
     });

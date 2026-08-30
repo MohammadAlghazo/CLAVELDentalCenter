@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
     const { fullName, phone, service, doctor, preferDate, preferTime, notes } =
       body;
 
-    // Validate required fields
     if (!fullName || !phone || !service) {
       return NextResponse.json(
         { error: "الاسم ورقم الجوال والخدمة مطلوبة" },
@@ -19,7 +18,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save to database
     const newBooking = await prisma.booking.create({
       data: {
         fullName,

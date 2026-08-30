@@ -16,7 +16,7 @@ export default function MapSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Contact Info */}
+          
           <div className="bg-[#F5F0E8] rounded-2xl p-6 flex flex-col items-center text-center gap-3">
             <div className="w-14 h-14 bg-[#1B4332] rounded-xl flex items-center justify-center">
               <MapPin size={24} className="text-[#C9A96E]" />

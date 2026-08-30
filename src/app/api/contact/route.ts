@@ -17,7 +17,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save to database
     await prisma.contactMessage.create({
       data: {
         name,

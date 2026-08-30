@@ -19,7 +19,7 @@ export default function AboutSection() {
     <section className="py-20 bg-white" id="about" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Image - Right side in RTL */}
+          
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -36,14 +36,13 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Text - Left side in RTL */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15 }}
             className="order-2 lg:order-2"
           >
-            {/* Label */}
+            
             <div className="inline-flex items-center gap-2 bg-[#F5F0E8] text-[#1B4332] px-4 py-1.5 rounded-full text-sm font-semibold font-cairo mb-4">
               من نحن
             </div>
@@ -54,7 +53,6 @@ export default function AboutSection() {
               <span className="text-[#C9A96E]">لطب الأسنان</span>
             </h2>
 
-            {/* Gold divider */}
             <div className="w-16 h-1 bg-gradient-to-l from-transparent via-[#C9A96E] to-[#C9A96E] rounded-full mb-6" />
 
             <p className="text-gray-600 leading-relaxed font-cairo text-base mb-6">
@@ -70,7 +68,6 @@ export default function AboutSection() {
               واحترافية في آنٍ واحد.
             </p>
 
-            {/* Highlights */}
             <ul className="space-y-3 mb-8">
               {highlights.map((item, i) => (
                 <li key={i} className="flex items-center gap-3">

@@ -43,7 +43,7 @@ export default function ServicesSection() {
   return (
     <section className="py-20 bg-[#F5F0E8]" id="services" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -63,7 +63,6 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayServices.map((service, i) => (
             <motion.div
@@ -94,7 +93,6 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

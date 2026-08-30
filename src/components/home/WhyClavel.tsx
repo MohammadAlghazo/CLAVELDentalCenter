@@ -19,7 +19,7 @@ export default function WhyClavel() {
   return (
     <section className="py-20 bg-[#F5F0E8]" id="why-us" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -35,7 +35,6 @@ export default function WhyClavel() {
           <div className="w-14 h-1 bg-[#C9A96E] rounded-full mx-auto" />
         </motion.div>
 
-        {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, i) => (
             <motion.div

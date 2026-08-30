@@ -25,8 +25,7 @@ export default function DoctorForm({ initialData }: { initialData?: Doctor }) {
       shortBio: formData.get("shortBio"),
       isActive: formData.get("isActive") === "on",
       image: formData.get("image") || null,
-      // For simplicity, we keep qualifications and specialties empty in this basic form,
-      // but in a real app, we would use dynamic inputs for arrays.
+
       qualifications: initialData?.qualifications || "[]",
       specialties: initialData?.specialties || "[]",
     };

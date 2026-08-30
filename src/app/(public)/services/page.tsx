@@ -31,7 +31,7 @@ const iconMap: Record<string, React.ReactNode> = {
 export default function ServicesPage() {
   return (
     <div className="font-cairo" dir="rtl">
-      {/* Hero */}
+      
       <section className="page-hero">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white font-cairo mb-4">
@@ -44,7 +44,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="py-20 bg-[#F5F0E8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -54,7 +53,7 @@ export default function ServicesPage() {
                 className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.06)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.14)] transition-all duration-300 hover:-translate-y-2 flex flex-col"
               >
                 <div className="p-7 flex-1">
-                  {/* Number + Icon */}
+                  
                   <div className="flex items-start justify-between mb-5">
                     <div className="w-14 h-14 bg-[#F5F0E8] group-hover:bg-[#1B4332]/5 rounded-xl flex items-center justify-center transition-colors duration-300">
                       {iconMap[service.icon] || <Activity size={32} className="text-[#C9A96E]" />}
@@ -71,7 +70,6 @@ export default function ServicesPage() {
                     {service.shortDesc}
                   </p>
 
-                  {/* When needed */}
                   <div className="bg-[#F5F0E8] rounded-lg p-3 mb-5">
                     <p className="text-xs font-semibold text-[#1B4332] font-cairo mb-1">
                       متى تحتاج هذا العلاج؟
@@ -82,7 +80,6 @@ export default function ServicesPage() {
                   </div>
                 </div>
 
-                {/* CTA */}
                 <div className="px-7 pb-7">
                   <Link
                     href={`/book?service=${encodeURIComponent(service.nameAr)}`}
@@ -98,7 +95,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
       <section className="py-16 bg-[#1B4332]">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold text-white font-cairo mb-4">

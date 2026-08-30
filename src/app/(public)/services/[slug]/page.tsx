@@ -30,10 +30,10 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <div className="font-cairo" dir="rtl">
-      {/* Hero */}
+      
       <section className="page-hero">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-10">
-          {/* Breadcrumb */}
+          
           <div className="flex items-center justify-center gap-2 text-white/60 text-sm font-cairo mb-4">
             <Link href="/" className="hover:text-[#C9A96E] transition-colors">الرئيسية</Link>
             <span>/</span>
@@ -48,11 +48,10 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Content */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Main Content */}
+            
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-bold text-[#1B4332] font-cairo mb-4">
                 عن هذه الخدمة
@@ -62,7 +61,6 @@ export default async function ServicePage({ params }: Props) {
                 {service.description}
               </p>
 
-              {/* When Needed */}
               <div className="bg-[#F5F0E8] rounded-2xl p-6 mb-8">
                 <h3 className="font-bold text-[#1B4332] font-cairo text-lg mb-3">
                   متى تحتاج هذا العلاج؟
@@ -72,7 +70,6 @@ export default async function ServicePage({ params }: Props) {
                 </p>
               </div>
 
-              {/* Benefits */}
               <h3 className="text-xl font-bold text-[#1B4332] font-cairo mb-4">
                 مميزات الخدمة
               </h3>
@@ -87,7 +84,6 @@ export default async function ServicePage({ params }: Props) {
                 ))}
               </ul>
 
-              {/* Related Doctors */}
               <h3 className="text-xl font-bold text-[#1B4332] font-cairo mb-5">
                 أطباؤنا المتخصصون
               </h3>
@@ -116,7 +112,6 @@ export default async function ServicePage({ params }: Props) {
               </div>
             </div>
 
-            {/* Sidebar CTA */}
             <div className="lg:col-span-1">
               <div className="sticky top-28 space-y-4">
                 <div className="bg-[#1B4332] rounded-2xl p-6 text-white text-center">

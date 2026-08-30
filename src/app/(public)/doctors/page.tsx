@@ -20,7 +20,7 @@ export default async function DoctorsPage() {
 
   return (
     <div className="font-cairo" dir="rtl">
-      {/* Hero */}
+      
       <section className="page-hero">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white font-cairo mb-4">
@@ -33,7 +33,6 @@ export default async function DoctorsPage() {
         </div>
       </section>
 
-      {/* Doctors Grid - Client Component */}
       <section className="py-20 bg-[#F5F0E8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <DoctorsGrid doctors={doctors} />

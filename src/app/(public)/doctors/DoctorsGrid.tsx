@@ -11,7 +11,7 @@ export default function DoctorsGrid({ doctors }: { doctors: Doctor[] }) {
           key={doctor.id}
           className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.07)] hover:shadow-[0_16px_50px_rgba(27,67,50,0.15)] transition-all duration-300 hover:-translate-y-3"
         >
-          {/* Photo */}
+          
           <div className="relative bg-gradient-to-br from-[#F5F0E8] to-[#e8e0d0] aspect-[4/5] flex items-center justify-center overflow-hidden">
             {doctor.image ? (
               <img
@@ -34,7 +34,6 @@ export default function DoctorsGrid({ doctors }: { doctors: Doctor[] }) {
             <div className="absolute inset-0 bg-gradient-to-t from-[#1B4332]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
 
-          {/* Info */}
           <div className="p-6">
             <h2 className="font-extrabold text-[#1B4332] font-cairo text-base leading-snug mb-1">
               {doctor.nameAr}

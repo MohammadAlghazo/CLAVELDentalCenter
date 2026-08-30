@@ -15,17 +15,15 @@ export const metadata = {
 export default async function AdminLayout({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
 
-  // If no session (meaning we are on the login page or unauthorized), don't show the sidebar
   if (!session) {
     return <div className="min-h-screen bg-[#F5F0E8] font-cairo" dir="rtl">{children}</div>;
   }
 
   return (
     <div className="min-h-screen bg-[#F5F0E8] font-cairo" dir="rtl">
-      {/* Sidebar - fixed on the right */}
-      <AdminSidebar />
       
-      {/* Main Content Area - padded to the right to avoid sidebar */}
+      <AdminSidebar />
+
       <main className="pr-64">
         <div className="p-8 max-w-7xl mx-auto">
           {children}

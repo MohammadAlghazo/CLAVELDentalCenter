@@ -22,7 +22,7 @@ export default async function FaqPage() {
 
   return (
     <div className="font-cairo" dir="rtl">
-      {/* Hero */}
+      
       <section className="page-hero">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white font-cairo mb-4">
@@ -35,12 +35,10 @@ export default async function FaqPage() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="py-20 bg-[#F5F0E8]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FaqAccordion items={faqs} />
 
-          {/* CTA */}
           <div className="mt-14 bg-[#1B4332] rounded-2xl p-8 text-center text-white">
             <h3 className="text-2xl font-bold font-cairo mb-3">
               لم تجد إجابة سؤالك؟

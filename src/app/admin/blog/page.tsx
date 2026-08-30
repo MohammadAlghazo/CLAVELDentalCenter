@@ -84,8 +84,7 @@ export default async function AdminBlogPage() {
                         >
                           <Edit size={18} />
                         </Link>
-                        {/* We will let the user use the edit page to delete, or add a client component for quick delete. 
-                            For simplicity, we'll direct them to edit page, or just keep it simple here. */}
+                        
                       </div>
                     </td>
                   </tr>

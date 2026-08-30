@@ -55,7 +55,7 @@ export default function MessagesClient({ initialMessages }: { initialMessages: C
 
   return (
     <div>
-      {/* Filters */}
+      
       <div className="flex gap-2 mb-6">
         <button
           onClick={() => setFilter("all")}

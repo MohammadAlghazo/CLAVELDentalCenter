@@ -13,7 +13,7 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
   return (
     <section className="py-20 bg-white" id="doctors" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -33,7 +33,6 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
           </p>
         </motion.div>
 
-        {/* Doctors Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {doctors.map((doctor, i) => (
             <motion.div
@@ -43,7 +42,7 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.07)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-100"
             >
-              {/* Photo */}
+              
               <div className="relative bg-[#F5F0E8] aspect-[4/5] flex items-center justify-center overflow-hidden">
                 {doctor.image ? (
                   <img
@@ -59,7 +58,6 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              {/* Info */}
               <div className="p-5">
                 <h3 className="font-bold text-[#1B4332] font-cairo text-base leading-snug mb-1">
                   {doctor.nameAr}
@@ -92,7 +90,6 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

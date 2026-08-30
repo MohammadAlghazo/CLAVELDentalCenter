@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <div className="font-cairo min-h-screen bg-[#F5F0E8] flex items-center justify-center px-4" dir="rtl">
       <div className="text-center max-w-lg">
-        {/* Big 404 */}
+        
         <div className="text-9xl font-extrabold text-[#1B4332] opacity-10 leading-none mb-6 select-none">
           404
         </div>

@@ -16,7 +16,6 @@ export async function POST(request: NextRequest) {
     const data = await request.json();
     const { currentPassword, newPassword } = data;
 
-    // Get current admin
     const admin = await prisma.admin.findUnique({
       where: { username: session.user.name },
     });
@@ -25,16 +24,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "المستخدم غير موجود" }, { status: 404 });
     }
 
-    // Verify current password
     const isPasswordValid = await bcrypt.compare(currentPassword, admin.passwordHash);
     if (!isPasswordValid) {
       return NextResponse.json({ error: "كلمة المرور الحالية غير صحيحة" }, { status: 400 });
     }
 
-    // Hash new password
     const newPasswordHash = await bcrypt.hash(newPassword, 10);
 
-    // Update password
     await prisma.admin.update({
       where: { id: admin.id },
       data: { passwordHash: newPasswordHash },

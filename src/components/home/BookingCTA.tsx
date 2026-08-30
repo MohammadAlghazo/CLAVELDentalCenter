@@ -81,7 +81,7 @@ export default function BookingCTA() {
             className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8"
           >
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {/* Name */}
+              
               <div>
                 <label className="block text-white/80 text-sm font-semibold font-cairo mb-1.5">
                   الاسم الكامل *
@@ -98,7 +98,6 @@ export default function BookingCTA() {
                 )}
               </div>
 
-              {/* Phone */}
               <div>
                 <label className="block text-white/80 text-sm font-semibold font-cairo mb-1.5">
                   رقم الجوال *
@@ -117,7 +116,6 @@ export default function BookingCTA() {
                 )}
               </div>
 
-              {/* Service */}
               <div>
                 <label className="block text-white/80 text-sm font-semibold font-cairo mb-1.5">
                   الخدمة المطلوبة *

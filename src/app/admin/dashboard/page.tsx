@@ -25,7 +25,6 @@ export default async function AdminDashboard() {
       <div className="mr-64 p-8">
         <h1 className="text-3xl font-extrabold text-[#1B4332] font-cairo mb-8">لوحة تحكم النظام</h1>
 
-        {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
           {stats.map((stat, i) => (
             <Link key={i} href={stat.href}
@@ -37,7 +36,6 @@ export default async function AdminDashboard() {
           ))}
         </div>
 
-        {/* Quick Links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             { href: "/admin/bookings", icon: <Calendar size={20} />, title: "إدارة الحجوزات", desc: "عرض وإدارة طلبات الحجز" },

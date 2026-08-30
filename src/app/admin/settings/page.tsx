@@ -14,7 +14,6 @@ export default async function SettingsPage() {
     redirect("/admin/login");
   }
 
-  // Fetch all admins
   const admins = await prisma.admin.findMany({
     select: {
       id: true,

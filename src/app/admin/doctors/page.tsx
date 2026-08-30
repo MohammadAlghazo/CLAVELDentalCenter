@@ -94,7 +94,7 @@ export default async function AdminDoctorsPage() {
                         >
                           <Pencil size={18} />
                         </Link>
-                        {/* We will implement a client component for delete later if needed, or simply link to an edit page which has delete */}
+                        
                       </div>
                     </td>
                   </tr>

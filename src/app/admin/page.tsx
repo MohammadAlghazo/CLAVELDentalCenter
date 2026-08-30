@@ -3,11 +3,10 @@ import { Users, CalendarCheck, MessageSquare, FileText } from "lucide-react";
 
 const prisma = new PrismaClient();
 
-// This page is completely server-side rendered (SSR) because we need fresh stats.
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardPage() {
-  // Fetch real-time stats from database
+
   const [
     totalDoctors,
     totalBookings,
@@ -97,7 +96,6 @@ export default async function AdminDashboardPage() {
         })}
       </div>
 
-      {/* Placeholder for Quick Actions or Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100">
           <h2 className="text-lg font-bold text-[#1B4332] mb-4 font-cairo">

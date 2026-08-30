@@ -24,10 +24,10 @@ const serviceLinks = [
 export default function Footer() {
   return (
     <footer className="bg-[#1B4332] text-white" dir="rtl">
-      {/* Main Footer */}
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand Column */}
+          
           <div className="lg:col-span-1 space-y-4">
             <Link href="/" className="inline-flex items-center gap-3 sm:gap-4 group">
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -50,7 +50,7 @@ export default function Footer() {
               مجمع كلافيل لطب الأسنان بالمدينة المنورة — رعاية متكاملة
               لصحة وجمال ابتسامتك بأعلى معايير الجودة.
             </p>
-            {/* Social Icons */}
+            
             <div className="flex items-center gap-3">
               <a
                 href="https://www.instagram.com/clavel.dental"
@@ -114,7 +114,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="font-bold text-base font-cairo mb-5 text-[#C9A96E]">
               روابط سريعة
@@ -134,7 +133,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h3 className="font-bold text-base font-cairo mb-5 text-[#C9A96E]">
               خدماتنا
@@ -154,7 +152,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="font-bold text-base font-cairo mb-5 text-[#C9A96E]">
               تواصل معنا
@@ -208,7 +205,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-center">
           <p className="text-xs text-gray-400 font-cairo text-center">

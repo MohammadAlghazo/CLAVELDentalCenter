@@ -32,7 +32,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
   return (
     <div className="font-cairo" dir="rtl">
-      {/* Hero Section */}
+      
       <section className="relative pt-32 pb-20 overflow-hidden min-h-[40vh] flex items-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[#1B4332]/90 z-10" />
@@ -64,7 +64,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         </div>
       </section>
 
-      {/* Content Section */}
       <section className="py-16 bg-[#F5F0E8]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="bg-white rounded-3xl shadow-sm p-8 md:p-12">

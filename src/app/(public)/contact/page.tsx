@@ -41,7 +41,7 @@ export default function ContactPage() {
       <section className="py-20 bg-[#F5F0E8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
+            
             <div className="space-y-5">
               <h2 className="text-2xl font-bold text-[#1B4332] font-cairo">معلومات التواصل</h2>
               <div className="w-12 h-1 bg-[#C9A96E] rounded-full mb-6" />
@@ -64,7 +64,6 @@ export default function ContactPage() {
                 </div>
               ))}
 
-              {/* Social */}
               <div className="bg-white rounded-xl p-5 shadow-sm">
                 <p className="font-bold text-[#1B4332] font-cairo text-sm mb-4">تابعنا على السوشيال</p>
                 <div className="flex items-center gap-3">
@@ -81,10 +80,8 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map block removed as per user request */}
             </div>
 
-            {/* Form */}
             <div className="bg-white rounded-2xl shadow-[0_8px_40px_rgba(27,67,50,0.08)] p-7">
               <h2 className="text-xl font-bold text-[#1B4332] font-cairo mb-6">أرسل لنا رسالة</h2>
               {submitted ? (

@@ -7,7 +7,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://clavel.dental";
   const now = new Date();
 
-  // Fetch dynamic data
   const doctors = await prisma.doctor.findMany({
     where: { isActive: true },
     select: { slug: true, updatedAt: true },

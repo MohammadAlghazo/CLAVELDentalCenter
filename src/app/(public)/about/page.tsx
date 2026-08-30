@@ -35,7 +35,7 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="font-cairo" dir="rtl">
-      {/* Page Hero */}
+      
       <section className="page-hero">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white font-cairo mb-4">
@@ -48,7 +48,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -89,7 +88,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Vision & Mission */}
       <section className="py-20 bg-[#F5F0E8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -127,7 +125,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -157,7 +154,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 bg-[#1B4332]">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold text-white font-cairo mb-4">
