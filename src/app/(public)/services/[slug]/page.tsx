@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { services, doctors } from "@/data/siteData";
+import { services } from "@/data/siteData";
+import { PrismaClient } from "@prisma/client";
 import { CheckCircle, Phone, MessageCircle, ArrowRight } from "lucide-react";
+
+const prisma = new PrismaClient();
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -27,6 +30,11 @@ export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
+
+  const activeDoctors = await prisma.doctor.findMany({
+    where: { isActive: true },
+    take: 4, // Show up to 4 doctors
+  });
 
   return (
     <div className="font-cairo" dir="rtl">
@@ -88,7 +96,7 @@ export default async function ServicePage({ params }: Props) {
                 أطباؤنا المتخصصون
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {doctors.map((doc) => (
+                {activeDoctors.map((doc) => (
                   <Link
                     key={doc.id}
                     href={`/doctors/${doc.slug}`}
