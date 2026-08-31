@@ -24,8 +24,8 @@ export default async function AdminLayout({ children }: { children: ReactNode })
       
       <AdminSidebar />
 
-      <main className="pr-64">
-        <div className="p-8 max-w-7xl mx-auto">
+      <main className="lg:pr-64 pt-16 lg:pt-0 transition-all duration-300">
+        <div className="p-4 lg:p-8 max-w-7xl mx-auto">
           {children}
         </div>
       </main>

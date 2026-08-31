@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -11,7 +12,9 @@ import {
   FileText,
   Settings,
   LogOut,
-  ChevronRight
+  ChevronRight,
+  Menu,
+  X
 } from "lucide-react";
 import Image from "next/image";
 
@@ -26,9 +29,36 @@ const menuItems = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <aside className="w-64 bg-[#1B4332] text-white min-h-screen flex flex-col fixed right-0 top-0 bottom-0 z-50 transition-all duration-300">
+    <>
+      {/* Mobile Menu Toggle */}
+      <button 
+        onClick={() => setIsOpen(true)}
+        className="lg:hidden fixed top-4 right-4 z-40 bg-[#1B4332] text-white p-2.5 rounded-xl shadow-lg"
+      >
+        <Menu size={24} />
+      </button>
+
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div 
+          className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`w-64 bg-[#1B4332] text-white min-h-screen flex flex-col fixed right-0 top-0 bottom-0 z-50 transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full lg:translate-x-0"}`}>
+        
+        {/* Close button for mobile inside sidebar */}
+        <button 
+          onClick={() => setIsOpen(false)}
+          className="lg:hidden absolute top-4 left-4 text-white/70 hover:text-white bg-white/10 p-2 rounded-lg"
+        >
+          <X size={20} />
+        </button>
       
       <div className="p-6 border-b border-white/10 flex flex-col items-center justify-center">
         <Link href="/" target="_blank" className="bg-white/10 p-3 rounded-full mb-3 hover:bg-white/20 transition-colors">
@@ -71,5 +101,6 @@ export default function AdminSidebar() {
         </button>
       </div>
     </aside>
+    </>
   );
 }
