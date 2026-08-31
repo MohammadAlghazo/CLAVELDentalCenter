@@ -27,13 +27,13 @@ export default function AdminLoginPage() {
 
       if (res?.error) {
         setError("بيانات الدخول غير صحيحة");
+        setLoading(false);
       } else {
-        router.push("/admin");
-        router.refresh();
+        // Keep loading=true so spinner keeps spinning while Next.js navigates
+        window.location.href = "/admin"; 
       }
     } catch (err) {
       setError("حدث خطأ أثناء تسجيل الدخول");
-    } finally {
       setLoading(false);
     }
   };

@@ -2,13 +2,12 @@
 import Link from "next/link";
 import { services } from "@/data/siteData";
 import {
-  Tooth,
+  Smile,
   Shield,
   Star,
   Gem,
   Sparkles,
   Droplets,
-  Smile,
   Zap,
   Activity,
   Sun,

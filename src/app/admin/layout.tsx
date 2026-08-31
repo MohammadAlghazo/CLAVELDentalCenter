@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 
 export const metadata = {
   title: "لوحة تحكم كلافيل - الإدارة",
