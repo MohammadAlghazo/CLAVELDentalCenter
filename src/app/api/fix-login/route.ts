@@ -1,31 +1,32 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    // The exact hash for "admin123$$"
-    const targetHash = '$2b$10$2exoU1KsXaLnAi5M.pzaVOgPVmMomJscVhjYBL1MpnfrBDZMnA9AW';
-    
-    // Check if admin exists
-    const adminExists = await prisma.admin.findUnique({ where: { username: 'admin' } });
-    
-    if (adminExists) {
-      await prisma.admin.update({
-        where: { username: 'admin' },
-        data: { passwordHash: targetHash }
-      });
-    } else {
-      await prisma.admin.create({
-        data: {
-          username: 'admin',
-          passwordHash: targetHash
-        }
+    const { searchParams } = new URL(request.url);
+    const pass = searchParams.get('pass');
+
+    if (!pass) {
+      return NextResponse.json({ 
+        error: "Please provide a pass parameter in the URL. Example: /api/fix-login?pass=123456" 
       });
     }
 
-    return NextResponse.json({ success: true, message: 'Admin password reset to admin123$$' });
+    const hash = await bcrypt.hash(pass, 10);
+    
+    await prisma.admin.upsert({
+      where: { username: 'admin' },
+      update: { passwordHash: hash },
+      create: { username: 'admin', passwordHash: hash }
+    });
+
+    return NextResponse.json({ 
+      success: true, 
+      message: `Admin password successfully reset to: ${pass}` 
+    });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message });
   }
