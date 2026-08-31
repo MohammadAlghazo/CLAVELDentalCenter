@@ -28,8 +28,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ article }, { status: 201 });
   } catch (error) {
     console.error("Create article error:", error);
-    if (error.code === "P2002") {
-      return NextResponse.json({ error: "الرابط (Slug) مستخدم بالفعل لمقال آخر" }, { status: 400 });
+    if ((error as any).code === "P2002") {
+      return NextResponse.json({ error: "الرابط (Slug) مستخدم بالفعل" }, { status: 400 });
     }
     return NextResponse.json({ error: "حدث خطأ أثناء حفظ المقال" }, { status: 500 });
   }

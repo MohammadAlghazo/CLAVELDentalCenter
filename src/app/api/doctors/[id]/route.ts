@@ -35,7 +35,7 @@ export async function PUT(
     return NextResponse.json({ doctor });
   } catch (error) {
     console.error("Update doctor error:", error);
-    if (error.code === "P2002") {
+    if ((error as any).code === "P2002") {
       return NextResponse.json({ error: "الرابط (Slug) مستخدم بالفعل لطبيب آخر" }, { status: 400 });
     }
     return NextResponse.json({ error: "حدث خطأ أثناء التحديث" }, { status: 500 });
