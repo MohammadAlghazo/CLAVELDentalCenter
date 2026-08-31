@@ -3,7 +3,7 @@ const fs = require('fs');
 
 async function exportSql() {
     console.log('Exporting SQLite data to MySQL format...');
-    const db = new sqlite3.Database('./dev.db');
+    const db = new sqlite3.Database('./prisma/dev.db');
     let sqlStr = "SET NAMES utf8mb4;\nSET FOREIGN_KEY_CHECKS = 0;\n\n";
 
     const readTable = (table) => {
