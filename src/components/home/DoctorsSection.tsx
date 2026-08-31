@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, UserRound, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -45,10 +46,12 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
               
               <div className="relative bg-[#F5F0E8] aspect-[4/5] flex items-center justify-center overflow-hidden">
                 {doctor.image ? (
-                  <img
+                  <Image
                     src={doctor.image}
                     alt={doctor.nameAr}
-                    className="w-full h-full object-cover object-top"
+                    fill
+                    className="object-cover object-top"
+                    unoptimized
                   />
                 ) : (
                   <div className="w-16 h-16 sm:w-24 sm:h-24 bg-[#1B4332]/10 rounded-full flex items-center justify-center">

@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       { message: "تم إضافة المشرف بنجاح", admin: { id: admin.id, username: admin.username } },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error("Create admin error:", error);
     return NextResponse.json(
       { error: "حدث خطأ أثناء إضافة المشرف" },

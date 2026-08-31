@@ -4,6 +4,8 @@ import { FileText, Plus, Edit, Trash2 } from "lucide-react";
 
 const prisma = new PrismaClient();
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminBlogPage() {
   const articles = await prisma.article.findMany({
     orderBy: { createdAt: "desc" },

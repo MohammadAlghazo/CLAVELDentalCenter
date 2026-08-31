@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ faq }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Create faq error:", error);
     return NextResponse.json({ error: "حدث خطأ أثناء الحفظ" }, { status: 500 });
   }

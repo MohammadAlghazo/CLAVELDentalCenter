@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { Heart } from "lucide-react";
+import { useInView } from "framer-motion";
 
 const customStats = [
   { value: "25+", label: "سنة خبرة" },
@@ -16,22 +17,8 @@ function StatItem({
   item: typeof customStats[0]; 
   index: number 
 }) {
-  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const isVisible = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <div

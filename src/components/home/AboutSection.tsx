@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { CheckCircle, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -26,11 +27,12 @@ export default function AboutSection() {
             transition={{ duration: 0.7 }}
             className="relative order-1 lg:order-1"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(27,67,50,0.15)]">
-              <img
+            <div className="relative h-[400px] sm:h-[450px] lg:h-[550px] w-full rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(27,67,50,0.15)]">
+              <Image
                 src="/images/about-clinic.jpg"
                 alt="الدكتور في مجمع كلافيل يعالج مريضاً"
-                className="w-full h-[400px] sm:h-[450px] lg:h-[550px] object-cover object-center"
+                fill
+                className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1B4332]/30 to-transparent" />
             </div>

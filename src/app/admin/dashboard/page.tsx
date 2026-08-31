@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Calendar, MessageSquare, FileText, Users, LayoutDashboard } from "lucide-react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboard() {
   const session = await getServerSession(authOptions);
 

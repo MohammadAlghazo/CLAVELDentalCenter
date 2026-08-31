@@ -16,6 +16,16 @@ export async function PUT(
 
   try {
     const data = await request.json();
+    
+    // Fetch existing article to preserve original publishedAt date if it was already published
+    const existingArticle = await prisma.article.findUnique({
+      where: { id: parseInt(params.id) },
+    });
+
+    if (!existingArticle) {
+      return NextResponse.json({ error: "المقال غير موجود" }, { status: 404 });
+    }
+
     const article = await prisma.article.update({
       where: { id: parseInt(params.id) },
       data: {
@@ -25,12 +35,13 @@ export async function PUT(
         content: data.content,
         imageUrl: data.imageUrl,
         status: data.status,
-        publishedAt: data.status === "published" ? new Date() : null, // Simplistic approach, might reset date if already published
+        // Keep existing publishedAt if published, otherwise set to new Date if moving from draft to published
+        publishedAt: data.status === "published" ? (existingArticle.publishedAt || new Date()) : null,
       },
     });
 
     return NextResponse.json({ article });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Update article error:", error);
     if (error.code === "P2002") {
       return NextResponse.json({ error: "الرابط (Slug) مستخدم بالفعل لمقال آخر" }, { status: 400 });

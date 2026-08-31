@@ -24,7 +24,7 @@ export async function PUT(
     });
 
     return NextResponse.json({ message });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json({ error: "حدث خطأ أثناء التحديث" }, { status: 500 });
   }
 }

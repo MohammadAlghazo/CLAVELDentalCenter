@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ article }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Create article error:", error);
     if (error.code === "P2002") {
       return NextResponse.json({ error: "الرابط (Slug) مستخدم بالفعل لمقال آخر" }, { status: 400 });

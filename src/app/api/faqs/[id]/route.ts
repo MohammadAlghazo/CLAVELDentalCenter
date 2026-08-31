@@ -27,7 +27,7 @@ export async function PUT(
     });
 
     return NextResponse.json({ faq });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Update faq error:", error);
     return NextResponse.json({ error: "حدث خطأ أثناء التحديث" }, { status: 500 });
   }

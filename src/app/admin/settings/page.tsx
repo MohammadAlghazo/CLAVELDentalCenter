@@ -6,6 +6,7 @@ import AdminManager from "@/components/admin/AdminManager";
 import { redirect } from "next/navigation";
 
 const prisma = new PrismaClient();
+export const dynamic = "force-dynamic";
 
 export default async function SettingsPage() {
   const session = await getServerSession(authOptions);

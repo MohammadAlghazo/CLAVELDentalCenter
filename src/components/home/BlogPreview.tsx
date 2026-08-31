@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { PrismaClient } from "@prisma/client";
 
@@ -37,10 +38,12 @@ export default async function BlogPreview() {
             >
               <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
                 {post.imageUrl ? (
-                  <img
+                  <Image
                     src={post.imageUrl}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    unoptimized
                   />
                 ) : (
                   <span className="text-gray-400 font-cairo text-sm">لا توجد صورة</span>
