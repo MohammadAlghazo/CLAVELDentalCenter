@@ -33,14 +33,14 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {doctors.map((doctor, i) => (
             <motion.div
               key={doctor.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.07)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+              className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.07)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-100 flex flex-col"
             >
               
               <div className="relative bg-[#F5F0E8] aspect-[4/5] flex items-center justify-center overflow-hidden">
@@ -51,37 +51,37 @@ export default function DoctorsSection({ doctors }: { doctors: Doctor[] }) {
                     className="w-full h-full object-cover object-top"
                   />
                 ) : (
-                  <div className="w-24 h-24 bg-[#1B4332]/10 rounded-full flex items-center justify-center">
-                    <UserRound size={48} className="text-[#1B4332]/30" />
+                  <div className="w-16 h-16 sm:w-24 sm:h-24 bg-[#1B4332]/10 rounded-full flex items-center justify-center">
+                    <UserRound size={32} className="text-[#1B4332]/30" />
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              <div className="p-5">
-                <h3 className="font-bold text-[#1B4332] font-cairo text-base leading-snug mb-1">
+              <div className="p-3 sm:p-5 flex flex-col flex-1">
+                <h3 className="font-bold text-[#1B4332] font-cairo text-sm sm:text-base leading-snug mb-1">
                   {doctor.nameAr}
                 </h3>
-                <p className="text-[#C9A96E] font-semibold font-cairo text-sm mb-2">
+                <p className="text-[#C9A96E] font-semibold font-cairo text-xs sm:text-sm mb-2 line-clamp-1">
                   {doctor.titleAr}
                 </p>
-                <p className="text-gray-500 font-cairo text-xs leading-relaxed mb-4">
+                <p className="text-gray-500 font-cairo text-[10px] sm:text-xs leading-relaxed mb-4 line-clamp-2 flex-1">
                   {doctor.shortBio}
                 </p>
 
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1.5 sm:gap-2 mt-auto">
                   <Link
                     href={`/doctors/${doctor.slug}`}
-                    className="flex items-center justify-center gap-1.5 bg-[#F5F0E8] text-[#1B4332] py-2 rounded-lg font-semibold font-cairo text-sm hover:bg-[#1B4332] hover:text-white transition-all duration-300"
+                    className="flex items-center justify-center gap-1 bg-[#F5F0E8] text-[#1B4332] py-1.5 sm:py-2 rounded-lg font-semibold font-cairo text-[10px] sm:text-sm hover:bg-[#1B4332] hover:text-white transition-all duration-300"
                   >
-                    <UserRound size={14} />
-                    عرض الملف الطبي
+                    <UserRound size={12} className="sm:w-3.5 sm:h-3.5" />
+                    الملف الطبي
                   </Link>
                   <Link
                     href={`/book?doctor=${encodeURIComponent(doctor.nameAr)}`}
-                    className="flex items-center justify-center gap-1.5 bg-[#1B4332] text-white py-2 rounded-lg font-semibold font-cairo text-sm hover:bg-[#2D6A4F] transition-all duration-300"
+                    className="flex items-center justify-center gap-1 bg-[#1B4332] text-white py-1.5 sm:py-2 rounded-lg font-semibold font-cairo text-[10px] sm:text-sm hover:bg-[#2D6A4F] transition-all duration-300"
                   >
-                    <Phone size={14} />
+                    <Phone size={12} className="sm:w-3.5 sm:h-3.5" />
                     احجز موعداً
                   </Link>
                 </div>

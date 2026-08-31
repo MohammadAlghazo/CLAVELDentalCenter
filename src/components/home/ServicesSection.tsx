@@ -62,7 +62,7 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {displayServices.map((service, i) => (
             <motion.div
               key={service.id}
@@ -72,20 +72,24 @@ export default function ServicesSection() {
             >
               <Link
                 href={`/services/${service.slug}`}
-                className="group block bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(27,67,50,0.06)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.14)] transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-[#C9A96E]/20 h-full"
+                className="group block bg-white rounded-2xl p-4 sm:p-6 shadow-[0_4px_20px_rgba(27,67,50,0.06)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.14)] transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-[#C9A96E]/20 h-full flex flex-col"
               >
-                <div className="w-14 h-14 bg-[#F5F0E8] group-hover:bg-[#1B4332]/5 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300">
-                  {iconMap[service.icon] || <Activity size={28} className="text-[#C9A96E]" />}
+                <div className="w-10 h-10 sm:w-14 sm:h-14 bg-[#F5F0E8] group-hover:bg-[#1B4332]/5 rounded-xl flex items-center justify-center mb-3 sm:mb-5 transition-colors duration-300">
+                  {/* Using a smaller icon on mobile by cloning element or applying classes, 
+                      but since iconMap provides fixed size, we wrap it in a scaling div on mobile */}
+                  <div className="scale-75 sm:scale-100">
+                    {iconMap[service.icon] || <Activity size={28} className="text-[#C9A96E]" />}
+                  </div>
                 </div>
-                <h3 className="font-bold text-[#1B4332] font-cairo text-lg mb-2 group-hover:text-[#C9A96E] transition-colors duration-200">
+                <h3 className="font-bold text-[#1B4332] font-cairo text-sm sm:text-lg mb-1 sm:mb-2 group-hover:text-[#C9A96E] transition-colors duration-200">
                   {service.nameAr}
                 </h3>
-                <p className="text-gray-500 font-cairo text-sm leading-relaxed line-clamp-3">
+                <p className="text-gray-500 font-cairo text-[10px] sm:text-sm leading-relaxed line-clamp-3 flex-1">
                   {service.shortDesc}
                 </p>
-                <div className="mt-4 flex items-center gap-1 text-[#C9A96E] text-sm font-semibold font-cairo">
+                <div className="mt-3 sm:mt-4 flex items-center gap-1 text-[#C9A96E] text-[10px] sm:text-sm font-semibold font-cairo">
                   <span>اعرف أكثر</span>
-                  <ArrowLeft size={14} />
+                  <ArrowLeft size={12} className="sm:w-3.5 sm:h-3.5" />
                 </div>
               </Link>
             </motion.div>

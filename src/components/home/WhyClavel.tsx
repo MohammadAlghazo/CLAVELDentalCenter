@@ -35,24 +35,24 @@ export default function WhyClavel() {
           <div className="w-14 h-1 bg-[#C9A96E] rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {features.map((feature, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group bg-white rounded-2xl p-7 text-center shadow-[0_4px_20px_rgba(27,67,50,0.06)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.14)] transition-all duration-300 hover:-translate-y-2"
+              className="group bg-white rounded-2xl p-4 sm:p-7 text-center shadow-[0_4px_20px_rgba(27,67,50,0.06)] hover:shadow-[0_12px_40px_rgba(27,67,50,0.14)] transition-all duration-300 hover:-translate-y-2 flex flex-col"
             >
-              <div className="w-16 h-16 bg-[#F5F0E8] group-hover:bg-[#1B4332] rounded-2xl flex items-center justify-center mx-auto mb-5 transition-colors duration-300">
-                <span className="group-hover:[&>svg]:text-[#C9A96E] transition-colors">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#F5F0E8] group-hover:bg-[#1B4332] rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-5 transition-colors duration-300">
+                <span className="group-hover:[&>svg]:text-[#C9A96E] transition-colors scale-75 sm:scale-100">
                   {iconMap[feature.icon]}
                 </span>
               </div>
-              <h3 className="font-bold text-[#1B4332] font-cairo text-lg mb-3">
+              <h3 className="font-bold text-[#1B4332] font-cairo text-sm sm:text-lg mb-2 sm:mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-500 font-cairo text-sm leading-relaxed">
+              <p className="text-gray-500 font-cairo text-[10px] sm:text-sm leading-relaxed flex-1">
                 {feature.desc}
               </p>
             </motion.div>
