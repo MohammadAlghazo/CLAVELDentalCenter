@@ -19,7 +19,6 @@ const menuItems = [
   { href: "/admin", label: "الرئيسية", icon: LayoutDashboard },
   { href: "/admin/bookings", label: "الحجوزات", icon: CalendarCheck },
   { href: "/admin/messages", label: "الرسائل", icon: MessageSquare },
-  { href: "/admin/doctors", label: "الأطباء", icon: Users },
   { href: "/admin/faqs", label: "الأسئلة الشائعة", icon: HelpCircle },
   { href: "/admin/blog", label: "المدونة", icon: FileText },
   { href: "/admin/settings", label: "الإعدادات", icon: Settings },

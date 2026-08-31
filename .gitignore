@@ -42,3 +42,8 @@ next-env.d.ts
 
 # AI Context Files
 project_context.md
+
+# Agent Configs
+.agents/
+AGENTS.md
+CLAUDE.md
