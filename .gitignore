@@ -47,3 +47,7 @@ project_context.md
 .agents/
 AGENTS.md
 CLAUDE.md
+
+# Databases
+*.db
+*.db-journal
