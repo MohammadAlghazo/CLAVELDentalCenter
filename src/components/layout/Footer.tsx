@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { Phone, MessageCircle, MapPin, Lock } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Lock, Clock, CalendarDays } from "lucide-react";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const quickLinks = [
   { href: "/", label: "الرئيسية" },
@@ -21,7 +24,18 @@ const serviceLinks = [
   { href: "/services/scaling-polishing", label: "تنظيف وتلميع الأسنان" },
 ];
 
-export default function Footer() {
+export default async function Footer() {
+  const settings = await prisma.setting.findMany({
+    where: {
+      key: {
+        in: ["workingDays", "workingHoursGeneral"]
+      }
+    }
+  });
+
+  const workingDays = settings.find((s: any) => s.key === "workingDays")?.value || "طوال أيام الأسبوع";
+  const workingHours = settings.find((s: any) => s.key === "workingHoursGeneral")?.value || "من 9 صباحاً إلى 12 ظهراً\nومن 1 ظهراً إلى 12 صباحاً";
+
   return (
     <footer className="bg-[#1B4332] text-white" dir="rtl">
       
@@ -188,6 +202,27 @@ export default function Footer() {
                   </span>
                   <span className="font-cairo">
                     المدينة المنورة، المملكة العربية السعودية
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-3 text-sm text-gray-300">
+                  <span className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CalendarDays size={15} />
+                  </span>
+                  <span className="font-cairo leading-relaxed">
+                    أيام العمل: {workingDays}
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-start gap-3 text-sm text-gray-300">
+                  <span className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Clock size={15} />
+                  </span>
+                  <span className="font-cairo leading-relaxed whitespace-pre-line">
+                    ساعات العمل:<br/>
+                    {workingHours}
                   </span>
                 </div>
               </li>

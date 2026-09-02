@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -25,6 +25,29 @@ type FormData = z.infer<typeof schema>;
 function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [shifts, setShifts] = useState<{id: string, label: string}[]>([
+    { id: "morning", label: "صباحاً (8ص - 12م)" },
+    { id: "evening", label: "مساءً (4م - 9م)" }
+  ]);
+
+  useEffect(() => {
+    fetch("/api/settings")
+      .then(res => res.json())
+      .then(data => {
+        if (data.bookingShifts) {
+          try {
+            const parsed = JSON.parse(data.bookingShifts);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              setShifts(parsed);
+            }
+          } catch (e) {
+            console.error("Failed to parse booking shifts", e);
+          }
+        }
+      })
+      .catch(console.error);
+  }, []);
+
   const searchParams = useSearchParams();
   const defaultService = searchParams.get("service") || "";
   const defaultDoctor = searchParams.get("doctor") || "";
@@ -175,8 +198,9 @@ function BookingForm() {
           <label className="form-label">الوقت المفضل</label>
           <select {...register("preferTime")} className="form-input cursor-pointer">
             <option value="">اختر الوقت</option>
-            <option value="صباحاً">صباحاً (8ص - 12م)</option>
-            <option value="مساءً">مساءً (4م - 9م)</option>
+            {shifts.map((shift) => (
+              <option key={shift.id} value={shift.label}>{shift.label}</option>
+            ))}
           </select>
         </div>
 

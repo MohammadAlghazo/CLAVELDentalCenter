@@ -1,9 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Phone, MessageCircle, MapPin, CheckCircle, Loader2 } from "lucide-react";
+import { Phone, MessageCircle, MapPin, CheckCircle, Loader2, Clock } from "lucide-react";
 
 const schema = z.object({
   name: z.string().min(2, "الاسم مطلوب"),
@@ -16,6 +16,20 @@ type FormData = z.infer<typeof schema>;
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [workingHours, setWorkingHours] = useState("من 9 ص إلى 12 م ومن 1 م إلى 12 ص");
+  
+  useEffect(() => {
+    fetch("/api/settings")
+      .then(res => res.json())
+      .then(data => {
+        if (data.workingHoursGeneral) {
+          // Replace newlines with spaces for inline display
+          setWorkingHours(data.workingHoursGeneral.replace(/\n/g, ' - '));
+        }
+      })
+      .catch(console.error);
+  }, []);
+
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data: FormData) => {
@@ -50,6 +64,7 @@ export default function ContactPage() {
                 { icon: <MessageCircle size={20} className="text-[#C9A96E]" />, label: "واتساب", value: "0510626630", href: "https://api.whatsapp.com/send?phone=966510626630", target: "_blank" },
                 { icon: <Phone size={20} className="text-[#C9A96E]" />, label: "الهاتف", value: "0148610552", href: "tel:0148610552" },
                 { icon: <MapPin size={20} className="text-[#C9A96E]" />, label: "الموقع", value: "المدينة المنورة، المملكة العربية السعودية", href: undefined },
+                { icon: <Clock size={20} className="text-[#C9A96E]" />, label: "مواعيد العمل", value: workingHours, href: undefined },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-xl p-5 flex items-center gap-4 shadow-sm">
                   <div className="w-11 h-11 bg-[#F5F0E8] rounded-xl flex items-center justify-center flex-shrink-0">{item.icon}</div>

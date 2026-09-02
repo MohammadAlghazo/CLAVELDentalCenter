@@ -11,6 +11,7 @@ import {
   HelpCircle, 
   FileText,
   Settings,
+  Lock,
   LogOut,
   ChevronRight,
   Menu,
@@ -24,7 +25,8 @@ const menuItems = [
   { href: "/admin/messages", label: "الرسائل", icon: MessageSquare },
   { href: "/admin/faqs", label: "الأسئلة الشائعة", icon: HelpCircle },
   { href: "/admin/blog", label: "المدونة", icon: FileText },
-  { href: "/admin/settings", label: "الإعدادات", icon: Settings },
+  { href: "/admin/site-settings", label: "إعدادات الموقع", icon: Settings },
+  { href: "/admin/settings", label: "مدراء النظام", icon: Lock },
 ];
 
 export default function AdminSidebar() {
